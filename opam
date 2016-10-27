@@ -6,12 +6,17 @@ doc: "http://anil.recoil.org/minima-theme/doc"
 license: "ISC"
 dev-repo: "https://github.com/avsm/minima-theme.git"
 bug-reports: "https://github.com/avsm/minima-theme/issues"
-tags: []
+tags: ["org:mirage" "org:ocamllabs"]
 available: [ ocaml-version >= "4.01.0"]
 depends: [
   "ocamlfind" {build}
   "ocamlbuild" {build}
   "topkg" {build} 
+  "fmt"
+  "lambdasoup"
+  "uri"
+  "ptime"
 ]
 depopts: []
 build: [ "ocaml" "pkg/pkg.ml" "build" "--pinned" "%{pinned}%" "--tests" "false" ]
+build-test: [ "ocaml" "pkg/pkg.ml" "build" "--pinned" "%{pinned}%" "--tests" "true" ]
