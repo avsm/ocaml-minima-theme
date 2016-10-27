@@ -1,0 +1,7 @@
+description = "Port of Jekyll Minima theme as an OCaml library"
+version = "%%VERSION%%"
+requires = "tyxml"
+archive(byte) = "minima_theme.cma"
+archive(native) = "minima_theme.cmxa"
+plugin(byte) = "minima_theme.cma"
+plugin(native) = "minima_theme.cmxs"

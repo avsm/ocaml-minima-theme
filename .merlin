@@ -1,0 +1,6 @@
+PKG bytes
+PKG tyxml
+PKG tyxml-ppx
+S src
+S test
+B _build/**
