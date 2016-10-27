@@ -12,8 +12,6 @@ depends: [
   "ocamlfind" {build}
   "ocamlbuild" {build}
   "topkg" {build} 
-  "tyxml-ppx" {build}
-  "tyxml"
 ]
 depopts: []
 build: [ "ocaml" "pkg/pkg.ml" "build" "--pinned" "%{pinned}%" "--tests" "false" ]

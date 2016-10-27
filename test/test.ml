@@ -4,6 +4,29 @@
    %%NAME%% %%VERSION%%
   ---------------------------------------------------------------------------*)
 
+let () =
+  let open Minima_includes in
+  let u = Uri.of_string in
+  let title = "Test" in
+  let description = "A description" in
+  let stylesheet_uri = u "/css/main.css" in
+  let canonical_uri = u "http://anil.recoil.org" in
+  let rss_feed_uri = u "/feed.xml" in
+  let username = "avsm" in
+  let page_links = ["About", u"/about"] in
+  let contact_email = "anil@recoil.org", (Some (u "mailto:anil@recoil.org")) in
+  let contact_name = "Anil Madhavapeddy", None in
+  let contacts = [contact_name; contact_email] in
+  let t = Minima_theme.v () in
+  let icons = [icon_twitter ~username t; icon_github ~username t] in
+  header ~title ~title_uri:canonical_uri ~page_links t |> fun header ->
+  head ~title ~description ~stylesheet_uri ~canonical_uri ~rss_feed_uri t |> fun head ->
+  footer ~title ~contacts ~icons ~description t |> fun footer ->
+  let open Soup in
+  to_string header |> print_endline;
+  to_string head |> print_endline;
+  to_string footer |> print_endline
+
 (*---------------------------------------------------------------------------
    Copyright (c) 2016 Anil Madhavapeddy
 

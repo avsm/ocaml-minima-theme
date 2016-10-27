@@ -4,26 +4,43 @@
    %%NAME%% %%VERSION%%
   ---------------------------------------------------------------------------*)
 
-open Soup
+type html = Soup.soup Soup.node
 
-let u = Uri.of_string
+val header :
+  title:string ->
+  title_uri:Uri.t ->
+  page_links: (string * Uri.t) list ->
+  Minima_theme.t -> html
 
-let replace_child ~child soup =
-  clear soup;
-  append_child soup child
+val head :
+  title:string ->
+  description:string ->
+  stylesheet_uri:Uri.t ->
+  canonical_uri:Uri.t ->
+  rss_feed_uri:Uri.t ->
+  Minima_theme.t -> html
 
-let replace_text ~text soup =
-  clear soup;
-  append_child soup (create_text text)
+val footer :
+  title:string ->
+  description:string ->
+  contacts:(string * Uri.t option) list ->
+  icons:html list ->
+  Minima_theme.t -> html
 
-type t = {
-  tmpl: string -> soup node;
-}
+val icon :
+  service:string ->
+  base_uri:Uri.t ->
+  username:string ->
+  Minima_theme.t -> html
 
-let v ?(base_dir="_includes/") () = 
-  let tmpl f = read_file (base_dir^f) |> parse in
-  {tmpl}
- 
+val icon_twitter :
+  username:string ->
+  Minima_theme.t -> html
+
+val icon_github :
+  username:string ->
+  Minima_theme.t -> html
+
 (*---------------------------------------------------------------------------
    Copyright (c) 2016 Anil Madhavapeddy
 

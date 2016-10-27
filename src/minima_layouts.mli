@@ -4,26 +4,25 @@
    %%NAME%% %%VERSION%%
   ---------------------------------------------------------------------------*)
 
-open Soup
+val default :
+  ?lang:string ->
+  head:'a Soup.node ->
+  header:'b Soup.node ->
+  content:'c Soup.node ->
+  footer:'d Soup.node -> unit
 
-let u = Uri.of_string
+val article :
+  title:string ->
+  date:Ptime.t ->
+  content:'a Soup.node ->
+  Soup.element Soup.node
 
-let replace_child ~child soup =
-  clear soup;
-  append_child soup child
+val home :
+  content:'a Soup.node ->
+  rss_feed_uri:Uri.t ->
+  posts:(Ptime.t * Uri.t * string) list ->
+  Soup.element Soup.node
 
-let replace_text ~text soup =
-  clear soup;
-  append_child soup (create_text text)
-
-type t = {
-  tmpl: string -> soup node;
-}
-
-let v ?(base_dir="_includes/") () = 
-  let tmpl f = read_file (base_dir^f) |> parse in
-  {tmpl}
- 
 (*---------------------------------------------------------------------------
    Copyright (c) 2016 Anil Madhavapeddy
 

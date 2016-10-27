@@ -8,7 +8,21 @@
 
     {e %%VERSION%% — {{:%%PKG_HOMEPAGE%% }homepage}} *)
 
-(** {1 Minima-theme} *)
+(** {1 Template handling} *)
+type t = {
+  tmpl: string -> Soup.soup Soup.node;
+}
+
+val v : ?base_dir:string -> unit -> t
+
+(** {1 Convenience functions} *)
+
+val u : string -> Uri.t
+(** [u] is a convenience alias for {!Uri.of_string} *)
+
+val replace_child: child:('a Soup.node) -> Soup.element Soup.node -> unit
+
+val replace_text: text:string -> Soup.element Soup.node -> unit
 
 (*---------------------------------------------------------------------------
    Copyright (c) 2016 Anil Madhavapeddy
