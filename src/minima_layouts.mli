@@ -23,6 +23,8 @@ val home :
   posts:(Ptime.t * Uri.t * string) list ->
   Soup.element Soup.node
 
+val to_string : 'a Soup.node -> string
+
 (*---------------------------------------------------------------------------
    Copyright (c) 2016 Anil Madhavapeddy
 

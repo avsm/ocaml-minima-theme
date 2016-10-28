@@ -66,6 +66,9 @@ let home ~content ~rss_feed_uri ~posts =
   append_child home_div p_rss;
   home_div
 
+let to_string s =
+  "<!DOCTYPE html>\n" ^ (Soup.to_string s)
+
 (*---------------------------------------------------------------------------
    Copyright (c) 2016 Anil Madhavapeddy
 
