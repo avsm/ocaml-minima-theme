@@ -4,6 +4,11 @@
    %%NAME%% %%VERSION%%
   ---------------------------------------------------------------------------*)
 
+(** HTML fragments for use in higher-level layouts.
+
+    Functions from this module generate HTML fragments that are then
+    used in complete HTML generation functions in {!Minima_layouts}. *)
+
 type html = Soup.soup Soup.node
 
 val header :

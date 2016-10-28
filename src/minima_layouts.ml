@@ -6,10 +6,16 @@
 
 open Soup
 open Minima_theme
+module MI = Minima_includes
 
 type html = Soup.soup Soup.node
 
-let default ?(lang="en") ~head ~header ~content ~footer () =
+let default ?(lang="en")
+    ~title ~title_uri ~description ~stylesheet_uri ~canonical_uri ~rss_feed_uri 
+    ~contacts ~page_links ~icons ~content t =
+  let head = MI.head ~title ~description ~stylesheet_uri ~canonical_uri ~rss_feed_uri t in
+  let header = MI.header ~title ~title_uri ~page_links t in
+  let footer = MI.footer ~title ~description ~contacts ~icons t in
   create_element ~attributes:["lang",lang] "html" |> fun html ->
   append_child html head;
   create_element "body" |> fun body ->

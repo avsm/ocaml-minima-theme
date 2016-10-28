@@ -4,12 +4,28 @@
    %%NAME%% %%VERSION%%
   ---------------------------------------------------------------------------*)
 
+(** HTML layouts for different sorts of Minima pages. *)
+
+(** {1 Top-level HTML generation} *)
+
 val default :
   ?lang:string ->
-  head:'a Soup.node ->
-  header:'b Soup.node ->
-  content:'c Soup.node ->
-  footer:'d Soup.node -> unit -> Soup.element Soup.node
+  title:string ->
+  title_uri:Uri.t ->
+  description:string ->
+  stylesheet_uri:Uri.t ->
+  canonical_uri:Uri.t ->
+  rss_feed_uri:Uri.t ->
+  contacts:(string * Uri.t option) list ->
+  page_links:(string * Uri.t) list ->
+  icons:Minima_includes.html list ->
+  content:'a Soup.node -> Minima_theme.t -> Soup.element Soup.node
+
+val to_string : 'a Soup.node -> string
+(** [to_string s] will convert the HTML nodes to an HTML string
+    and also prepend a [DOCTYPE] tag so that browsers interpret
+    it properly. *)
+
 
 val article :
   title:string ->
@@ -22,8 +38,6 @@ val home :
   rss_feed_uri:Uri.t ->
   posts:(Ptime.t * Uri.t * string) list ->
   Soup.element Soup.node
-
-val to_string : 'a Soup.node -> string
 
 (*---------------------------------------------------------------------------
    Copyright (c) 2016 Anil Madhavapeddy
