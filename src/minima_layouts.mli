@@ -9,7 +9,7 @@ val default :
   head:'a Soup.node ->
   header:'b Soup.node ->
   content:'c Soup.node ->
-  footer:'d Soup.node -> unit
+  footer:'d Soup.node -> unit -> Soup.element Soup.node
 
 val article :
   title:string ->

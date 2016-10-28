@@ -9,7 +9,7 @@ open Minima_theme
 
 type html = Soup.soup Soup.node
 
-let default ?(lang="en") ~head ~header ~content ~footer =
+let default ?(lang="en") ~head ~header ~content ~footer () =
   create_element ~attributes:["lang",lang] "html" |> fun html ->
   append_child html head;
   create_element "body" |> fun body ->
@@ -20,7 +20,8 @@ let default ?(lang="en") ~head ~header ~content ~footer =
   create_element ~class_:"wrapper" "div" |> fun wrapper ->
   append_child main wrapper;
   append_child wrapper content;
-  append_child body footer
+  append_child body footer;
+  html
 
 let article ~title ~date ~content =
   let rfc_date = Fmt.strf "%a" (Ptime.pp_rfc3339 ()) date in
@@ -43,26 +44,13 @@ let article ~title ~date ~content =
   append_child post_div content;
   article
   
-(*
-    {% for post in site.posts %}
-      <li>
-        <span class="post-meta">{{ post.date | date: "%b %-d, %Y" }}</span>
-
-        <h2>
-          <a class="post-link" href="{{ post.url | relative_url }}">{{ post.title | escape }}</a>
-        </h2>
-      </li>
-    {% endfor %}
-</div>
-*)
-
 let home ~content ~rss_feed_uri ~posts =
   create_element ~class_:"home" "div" |> fun home_div ->
   create_element ~class_:"page-heading" ~inner_text:"Posts" "h1" |> fun h1 ->
   append_child home_div h1;
   append_child home_div content;
   create_element ~class_:"post-list" "ul" |> fun ul ->
-  append_child home_div h1;
+  append_child home_div ul;
   List.iter (fun (date, href, title) ->
     let post_date = Fmt.strf "%a" (Ptime.pp_rfc3339 ()) date in
     create_element "li" |> fun li ->
