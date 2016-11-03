@@ -11,8 +11,8 @@ module MI = Minima_includes
 type html = Soup.soup Soup.node
 
 let default ?(lang="en")
-    ~title ~title_uri ~description ~stylesheet_uri ~canonical_uri ~rss_feed_uri 
-    ~contacts ~page_links ~icons ~content t =
+    ~title ~title_uri ~description ~stylesheet_uri ~canonical_uri
+    ~rss_feed_uri ~contacts ~page_links ~icons ~content t =
   let head = MI.head ~title ~description ~stylesheet_uri ~canonical_uri ~rss_feed_uri t in
   let header = MI.header ~title ~title_uri ~page_links t in
   let footer = MI.footer ~title ~description ~contacts ~icons t in
@@ -63,9 +63,8 @@ let home ~content ~rss_feed_uri ~posts =
     append_child ul li;
     create_element ~class_:"post-meta" ~inner_text:post_date "span" |> append_child li;
     append_child li (create_text " ");
-    create_element "h2" |> fun h2 ->
-    append_child li h2;
-    create_element ~class_:"post-link" ~attributes:["href",Uri.to_string href] ~inner_text:title "a" |> append_child li
+    create_element "h2" |> fun h2 -> append_child li h2;
+    create_element ~class_:"post-link" ~attributes:["href",Uri.to_string href] ~inner_text:title "a" |> append_child h2
   ) posts;
   create_element ~class_:"rss-subscribe" ~inner_text:"subscribe " "p" |> fun p_rss ->
   append_child p_rss (create_element ~attributes:["href", Uri.to_string rss_feed_uri] "a");
