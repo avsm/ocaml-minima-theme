@@ -2,7 +2,7 @@ opam-version: "1.2"
 maintainer: "Anil Madhavapeddy <anil@recoil.org>"
 authors: ["Anil Madhavapeddy <anil@recoil.org>"]
 homepage: "https://github.com/avsm/minima-theme"
-doc: "http://anil.recoil.org/minima-theme/doc"
+doc: "http://docs.mirage.io/minima-theme/"
 license: "ISC"
 dev-repo: "https://github.com/avsm/minima-theme.git"
 bug-reports: "https://github.com/avsm/minima-theme/issues"
