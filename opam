@@ -1,13 +1,13 @@
 opam-version: "1.2"
 maintainer: "Anil Madhavapeddy <anil@recoil.org>"
 authors: ["Anil Madhavapeddy <anil@recoil.org>"]
-homepage: "https://github.com/avsm/minima-theme"
+homepage: "https://github.com/avsm/ocaml-minima-theme"
 doc: "http://docs.mirage.io/minima-theme/"
 license: "ISC"
-dev-repo: "https://github.com/avsm/minima-theme.git"
-bug-reports: "https://github.com/avsm/minima-theme/issues"
+dev-repo: "https://github.com/avsm/ocaml-minima-theme.git"
+bug-reports: "https://github.com/avsm/ocaml-minima-theme/issues"
 tags: ["org:mirage" "org:ocamllabs"]
-available: [ ocaml-version >= "4.01.0"]
+available: [ ocaml-version >= "4.02.3"]
 depends: [
   "ocamlfind" {build}
   "ocamlbuild" {build}
