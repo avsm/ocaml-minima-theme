@@ -2,15 +2,12 @@ minima-theme — Port of Jekyll Minima theme as an OCaml library
 --------------------------------------------------------------
 %%VERSION%%
 
-minima-theme is an OCaml port of the [Jekyll Minima](https://github.com/jekyll/minima)
-that is the default blog format for many users.  It provides a typed interface for
-easy use from OCaml code.
+minima-theme is an OCaml port of the [Jekyll Minima](https://github.com/jekyll/minima) that is the default blog format for many users.  It provides a typed interface for easy use from OCaml code.
 
-minima-theme is distributed under the ISC license.  The original Minima
-HTML templates bundled with this repository remain under the MIT license.
+minima-theme is distributed under the ISC license.  The original Minima HTML templates bundled with this repository remain under the MIT license.
 
-Homepage: <https://github.com/avsm/ocaml-jekyll-minima-theme>
-Contact: Anil Madhavapeddy `<anil@recoil.org>`
+* Homepage: <https://github.com/avsm/ocaml-minima-theme>
+* Contact: Anil Madhavapeddy `<anil@recoil.org>`
 
 ## Installation
 
