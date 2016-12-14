@@ -20,8 +20,22 @@ type t = {
   tmpl: string -> soup node;
 }
 
-let v ?(base_dir="_includes/") () = 
-  let tmpl f = read_file (base_dir^f) |> parse in
+let default_theme_dir =
+  let open Bos in
+  let open Rresult in
+  let opam_cmd = Cmd.(v "opam"%"config"%"var"%"share") in
+  OS.Cmd.(run_out opam_cmd |> to_string ~trim:true) |> function
+  | Error (`Msg m) -> Fmt.epr "Could not find opam install for minima-theme\n%s\n%!" m; None
+  | Ok path -> Some (Fpath.(v path / "minima-theme" |> to_string))
+
+let v ?base_dir () =
+  let base_dir =
+    match base_dir, default_theme_dir with
+    | Some d, _ -> d
+    | None, Some d -> d
+    | None, None -> Fmt.epr "Need to specify a theme dir or `opam install minima-theme`\n%!"; exit 1
+  in
+  let tmpl f = read_file (base_dir^"/"^f) |> parse in
   {tmpl}
  
 (*---------------------------------------------------------------------------

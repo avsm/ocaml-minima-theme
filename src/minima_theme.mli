@@ -14,6 +14,11 @@ type t = {
 }
 
 val v : ?base_dir:string -> unit -> t
+(** [v ?base_dir] constructs a Minima_theme handler that uses templates
+  from [base_dir].  If [base_dir] is not specified, it defaults to the
+  value of [opam config var minima-theme:share].  This requires an active
+  OPAM installation at the runtime of the library (this limitation will
+  be lifted in a future release). *)
 
 (** {1 Convenience functions} *)
 
