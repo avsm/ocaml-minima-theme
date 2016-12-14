@@ -1,6 +1,6 @@
 description = "Port of Jekyll Minima theme as an OCaml library"
 version = "%%VERSION%%"
-requires = "fmt lambdasoup uri ptime"
+requires = "fmt lambdasoup uri ptime bos fmt"
 archive(byte) = "minima_theme.cma"
 archive(native) = "minima_theme.cmxa"
 plugin(byte) = "minima_theme.cma"

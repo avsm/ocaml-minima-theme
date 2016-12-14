@@ -27,16 +27,8 @@ distribution.
 
 [doc]: http://docs.mirage.io/minima-theme/
 
-## Sample programs
+## Templates
 
-If you installed minima-theme with `opam` sample programs are located in
-the directory `opam config var minima-theme:doc`.
-
-In the distribution sample programs and tests are located in the
-[`test`](test) directory of the distribution. They can be built with:
-
-    ocamlbuild -use-ocamlfind test/tests.otarget
-
-The resulting binaries are in `_build/test`.
-
-- `test.native` tests the library, nothing should fail.
+If you installed minima-theme with `opam` the runtime templates are located in
+the directory `opam config var minima-theme:share`.  This is looked up
+by default if no base directory is provided when `Minima_theme.v` is called.
